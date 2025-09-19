@@ -77,12 +77,16 @@ Its mission is to bring **autonomy, safety, and simplicity** to daily life throu
 
 ---
 
-## 📁 Repository Structure
+## 📁 Repository Structure & Development
 
-- **[luna-assistant-ai-core](./)** ← you are here (Rust engine, FFI bindings, basic clients)  
-- **[luna-assistant-ai-docs](https://github.com/luna-assistant-ai/luna-assistant-ai-docs)** (guides, accessibility standards, prompt library)  
-- **[luna-assistant-ai-pro](https://github.com/luna-assistant-ai/luna-assistant-ai-pro)** — private (AI copilots, premium integrations, caregiver dashboard)  
-- **[@luna-assistant-ai](https://github.com/luna-assistant-ai)** (organization-level roadmap & discussions)  
+- **[luna-assistant-ai-core](./)** ← you are here  
+  - Rust engine, FFI bindings, iOS client (solo development + multi-AI governance)  
+- **[luna-assistant-ai-docs](https://github.com/luna-assistant-ai/luna-assistant-ai-docs)**  
+  - User guides, accessibility standards, AI governance documentation  
+- **Development Tools**  
+  - VS Code + Continue plugin, CrewAI + AutoGen orchestration  
+- **Strategic Planning**  
+  - Multi-AI domain teams for comprehensive business analysis  
 
 ---
 
@@ -120,19 +124,27 @@ flowchart TD
         Emergency["🚨 Emergency Services"]
     end
 
+    subgraph Governance["🤖 AI Governance"]
+        CrewAI["CrewAI Teams\nLegal • Marketing • Tech • Finance"]
+        AutoGen["AutoGen\nDecision Debates"]
+    end
+
     User <--> App
     App <--> Core
     Core <--> Skills
     Skills --> GPT
     Skills --> Gmail
     Skills --> Emergency
+    CrewAI -.-> AutoGen
+    AutoGen -.-> Core
 
     style User fill:#e1f5fe
     style Skills fill:#f3e5f5
     style Emergency fill:#ffebee
+    style Governance fill:#f8f9fa
 ```
 
-*Luna's governance and development process (including AI-assisted analysis) is detailed in the [AI-Assisted Governance](#-ai-assisted-governance-human-in-the-loop) section below.*
+*Luna's detailed AI governance and solo development approach is explained in the [AI-Native Development & Governance](#-ai-native-development--governance) section below.*
 
 ---
 
@@ -144,61 +156,125 @@ flowchart TD
 
 ---
 
-## 🤖 AI-Assisted Governance (Human-in-the-Loop)
+## 🤖 AI-Native Development & Governance
 
-Luna leverages AI copilots to scale strategic analysis in accessibility—a domain where specialized expertise is scarce—while maintaining strict human oversight on all decisions.
+Luna combines solo development with a sophisticated multi-AI governance system, ensuring both rapid execution and comprehensive strategic oversight across all business domains.
 
-### Decision Flow
-
+### Development Philosophy
 ```
-AI Strategic Analysis → Human Review → Community Input → Final Decision
+Strategic Governance (Multi-AI Teams) → Solo Implementation → Community Validation
 ```
 
-**What AI handles:**
-- Market intelligence & competitive positioning analysis  
-- Product strategy recommendations & feature prioritization  
-- Operational modeling & unit economics forecasting  
-- Risk assessment & regulatory compliance mapping  
+**Why this approach?**
+- **Vision coherence**: Single developer ensures accessibility-first standards throughout  
+- **Strategic depth**: Specialized AI teams provide expert analysis across all business domains  
+- **Rapid execution**: No coordination overhead, direct implementation from validated decisions  
+- **Quality control**: Critical accessibility features developed with maximum care and consistency  
 
-**What humans control:**
-- All strategic decisions affecting users and roadmap  
-- Safety-critical features (emergency calls, data privacy)  
-- Community governance and contributor policies  
-- Final product releases and partnership agreements  
+### AI Governance Structure
 
-### AI Copilot Teams
+#### **Specialized Domain Teams (CrewAI Orchestration)**
 
-| Copilot | Strategic Focus | Business-Critical Questions |
-|---------|-----------------|-----------------------------|
-| **Market Intelligence** | Competitive positioning & user acquisition | "Which accessibility gaps can we own vs. competitors?" "What drives switching from existing solutions?" |
-| **Product Strategy** | Feature prioritization & roadmap | "Which skills unlock highest user retention?" "When do we expand beyond visual impairments?" |
-| **Operations** | Scalability & unit economics | "At what user volume do we need dedicated infrastructure?" "Which premium features justify subscription pricing?" |
-| **Risk Management** | Regulatory compliance & reputation | "What liability exposure from emergency call failures?" "How do privacy regulations limit personalization?" |
+| Domain | AI Agents | Focus Areas |
+|--------|-----------|-------------|
+| **Legal** | Claude + GPT-4 | GDPR compliance, emergency call liability, medical device regulations, IP strategy |
+| **Marketing** | Claude + GPT-4 | Competitive analysis, user research synthesis, positioning, partnership opportunities |
+| **Technical** | Continue + Claude | Architecture decisions, performance optimization, security implementation, scalability |
+| **Finance** | Claude + GPT-4 | Unit economics, pricing strategy, funding opportunities, cost optimization |
 
-### Strategic Output Examples
+#### **Decision Validation (AutoGen Multi-Agent Debates)**
+For major strategic decisions, automated debates between domain experts:
+```
+Legal Agent ↔ Marketing Agent ↔ Technical Agent ↔ Finance Agent
+        ↓
+    Synthesized recommendations + risk assessment
+        ↓
+    Human final decision with full context
+```
 
-**Market Intelligence:**  
-> "Voiceitt and Be My Eyes dominate communication, not autonomy. Emergency calling gap = 47% of target users underserved. Entry strategy: own the safety vertical first."
+#### **Daily Development (Human + AI Collaboration)**
+- **Continue (VS Code)**: Rust core development, SwiftUI implementation, debugging  
+- **Claude**: Tactical decisions, code review, accessibility validation  
+- **GitHub Copilot**: Additional code assistance and completion  
 
-**Product Strategy:**  
-> "User retention analysis: Emergency features drive 89% retention vs 34% for entertainment features. Prioritize SOS + medication reminders over Spotify integration."
+### Real Governance Examples
 
-**Operations:**  
-> "GPT-4o cost trajectory: $0.08/user at 1K users → $0.03/user at 10K users. Break-even with freemium: 2,500 active users minimum or $15/month premium tier."
+#### **Decision: Add Medication Reminders to MVP**
+```
+Legal Agent: "Medical device classification risk? Liability if reminder fails?"
+Marketing Agent: "89% of users 65+ interested, major gap vs competitors"  
+Technical Agent: "2-week implementation, calendar integration + notifications"
+Finance Agent: "Premium feature potential, $5/month tier justifiable"
 
-**Risk Management:**  
-> "Emergency call liability: NZ accident compensation covers technology failures. Key risk = false positives. Mitigation: 3-second confirmation + voice pattern recognition."
+AutoGen Resolution: "Proceed with legal disclaimers + freemium trial period"
+Final Decision: Approved - implement with liability protection
+```
 
-### Safeguards in Place
+#### **Weekly Domain Intelligence Reports**
+**Legal Team Output:**
+> "New EU AI Act provisions affect voice assistants handling health data. Recommend privacy-by-design audit before Phase 2."
 
-- 🔒 **No autonomous decisions**: All AI outputs require maintainer approval  
-- 👥 **Community visibility**: Major decisions discussed in public GitHub discussions  
-- 🛡️ **Safety override**: Human veto on any AI recommendation, no questions asked  
-- 📊 **Transparency**: AI-generated reports tagged and publicly available  
+**Marketing Team Output:**
+> "Be My Eyes announced $25M funding for AI vision pivot. Opportunity: voice-first emergency features remain underserved."
 
-*Think of it as having a strategic consulting team that never sleeps, but your human judgment always has the final say.*
+**Technical Team Output:**
+> "GPT-4o Realtime latency averaging 847ms. Critical for emergency calls - investigate dedicated infrastructure."
 
----
+**Finance Team Output:**
+> "Unit economics: $0.08/user at 1K users → $0.03/user at 10K. Break-even: 2,500 active users or $15/month premium."
+
+### Development Workflow
+
+#### **Strategic Layer (Weekly)**
+1. **Domain Analysis**: Each AI team generates intelligence reports  
+2. **Cross-domain Synthesis**: CrewAI orchestrates comprehensive strategic overview   
+3. **Decision Validation**: AutoGen debates for major choices  
+4. **Roadmap Updates**: Human decisions based on AI recommendations  
+
+#### **Implementation Layer (Daily)**
+1. **Feature Planning**: Human + Claude define requirements  
+2. **Development**: Human + Continue implement in VS Code  
+3. **Code Review**: Claude validates accessibility standards  
+4. **User Testing**: NZ community feedback integration  
+
+#### **Validation Layer (Continuous)**
+- **Community Input**: GitHub Discussions for user feedback  
+- **Accessibility Testing**: Manual validation of all critical features   
+- **Performance Monitoring**: Automated alerts for latency/reliability issues  
+
+### Technology Stack
+
+**AI Orchestration:**
+- **CrewAI**: Multi-agent team coordination and reporting  
+- **AutoGen**: Multi-party debates for complex decisions   
+- **Claude (Anthropic)**: Strategic analysis, legal/marketing intelligence  
+- **GPT-4 (OpenAI)**: Cross-validation, technical analysis  
+- **Continue**: In-editor development assistance in VS Code  
+
+**Development Tools:**
+- **VS Code + Continue Plugin**: Primary development environment  
+- **GitHub Projects**: Public roadmap tracking  
+- **Drone CI**: Multi-platform builds and deployment  
+- **GitHub Discussions**: Community feedback and early testing  
+
+### Governance Safeguards
+
+- 🔒 **Human Final Authority**: All strategic decisions require human approval  
+- 👥 **Community Validation**: Features tested with visually impaired users before release  
+- 🛡️ **Safety Override**: Manual review for all emergency-related features  
+- 📊 **Transparent Process**: AI recommendations and human decisions documented publicly  
+- ⚖️ **Multi-perspective Analysis**: Every major decision validated by all four domain teams  
+
+### Why This Approach Works for Accessibility
+
+**Domain Expertise**: Legal AI ensures compliance with disability rights regulations, Marketing AI understands accessibility user needs, Technical AI optimizes for assistive technologies, Finance AI ensures sustainable funding for continued development.
+
+**Rapid Iteration**: Solo development enables immediate implementation of validated features without coordination delays.
+
+**Quality Assurance**: Human oversight ensures every accessibility feature meets the highest standards for safety and usability.
+
+*Think of it as having a full executive team and board of advisors working 24/7, while maintaining the agility and vision coherence of solo development.*
+
 
 ## 🔑 Open Source Strategy
 
@@ -225,21 +301,6 @@ AI Strategic Analysis → Human Review → Community Input → Final Decision
 - **GitHub Projects**: public roadmap & prioritization  
 - **GitHub Discussions**: open channel for visually impaired users & caregivers  
 
----
-
-## 🛠 Development Workflow
-
-**Project Management:**
-- **GitHub Projects** → Public roadmap & feature tracking  
-- **GitHub Issues** → Bug reports, accessibility requirements  
-- **GitHub Discussions** → Community feedback & early testing signup  
-
-**CI/CD Pipeline:**
-- **Drone CI** → Multi-platform builds (iOS, Android, Raspberry Pi Docker images)  
-- **Mergify** → Auto-merge when Drone CI passes + review approved  
-- **AI Copilots** → Generate PRDs/ADRs/issues directly to GitHub Projects  
-
----
 
 ## 🛣️ Roadmap & Status *(last updated: December 2024)*
 
@@ -252,17 +313,26 @@ Progress snapshots and issues live in GitHub Projects boards and GitHub Discussi
 
 ---
 
-## 👩‍💻 Contributing
+## 👥 Community & Contributions
 
-Luna thrives on community input—especially from people with lived accessibility experience. Whether you are new to open source or a seasoned maintainer, we can pair you with a starter issue or mentoring buddy.
+**Development Approach**: Core development is handled solo with AI assistance to ensure accessibility standards, rapid iteration, and vision coherence.
 
-- Fork then branch (`feat/...`, `fix/...`)  
-- Run tests (`cargo test`, `xcodebuild test`) before opening a PR  
-- Fill the PR template (objective, tests, accessibility, rollback)  
-- Human review required → CI green → Mergify auto-merge  
-- Follow Conventional Commits and keep PRs small, tested, documented  
+**Community input welcomed**:
+- 🧪 **Early testing** (especially from visually impaired users in NZ)
+- 💡 **Feature suggestions** via [GitHub Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions)
+- 📖 **Documentation improvements** (accessibility guides, user manuals)
+- 🌐 **Translations** for international accessibility support
+- 🔍 **User research** (accessibility pain points, workflow feedback)
 
----
+**Not accepting**:
+- Code contributions to core engine (maintained solo for consistency)
+- Architecture changes (strategic decisions handled via AI-assisted planning)
+
+**Get involved**:
+- **Star** this repository to follow development progress
+- **Watch** for release notifications and testing opportunities  
+- **Join discussions** to shape features based on real accessibility needs
+
 
 ## 🤝 Get Involved
 
