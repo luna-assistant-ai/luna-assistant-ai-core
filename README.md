@@ -18,6 +18,32 @@ Its mission is to bring **autonomy, safety, and simplicity** to daily life throu
 
 ---
 
+## 🛡️ Security & Privacy First
+
+- 🔑 No API keys stored on device (ephemeral credentials only)  
+- 🔒 All local data encrypted (SQLite + system keychain/keystore)  
+- 🚫 Zero voice recordings by default (opt-in storage only)  
+- ✅ Critical actions require vocal confirmation (e.g., “Yes, call emergency”)  
+
+---
+
+## ⚡ Quick Demo
+
+1. Clone & enter the workspace:
+   ```bash
+   git clone https://github.com/luna-assistant-ai/luna-assistant-ai-core.git
+   cd luna-assistant-ai-core
+   ```
+2. Test and build the core crate:
+   ```bash
+   cd core
+   cargo test
+   cargo build
+   ```
+3. No code yet? Watch [@luna-assistant-ai](https://github.com/luna-assistant-ai) to get notified when the first modules land.
+
+---
+
 ## 🛠️ Getting Started
 
 1. Clone the repository and enter the workspace:
@@ -25,7 +51,11 @@ Its mission is to bring **autonomy, safety, and simplicity** to daily life throu
    git clone https://github.com/luna-assistant-ai/luna-assistant-ai-core.git
    cd luna-assistant-ai-core
    ```
-2. Install prerequisites (Rust ≥ 1.81, Xcode for iOS, Node.js for the OAuth backend). If you do not have Rust yet, run `rustup default stable` after installing rustup.
+2. Install prerequisites:
+   - Rust ≥ 1.81 (required)  
+   - Xcode for iOS development (required if you target iOS)  
+   - Node.js (optional — only for local OAuth backend testing)  
+   If you do not have Rust yet, run `rustup default stable` after installing rustup.
    > Note: The `core/` crate and client apps will appear as code lands in this repository. If you cloned a skeleton repo without those folders yet, keep an eye on the roadmap section or GitHub issues for the drop.
 3. Bootstrap the core crate to verify your toolchain:
    ```bash
@@ -39,6 +69,20 @@ Its mission is to bring **autonomy, safety, and simplicity** to daily life throu
    ```
    Then press `Cmd + R` inside Xcode. Refer to the sections below for more platform-specific instructions, environment variables, and integration secrets.
    Additional deep-dive guides will live in the [`luna-assistant-ai-docs`](https://github.com/luna-assistant-ai/luna-assistant-ai-docs) repository as they are published.
+
+**Not ready to code yet?**  
+- ⭐ Star this repo to get notified of first commits  
+- 💬 Join [Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions) to shape the roadmap  
+- 📖 Browse accessibility research and guidelines in [`luna-assistant-ai-docs`](https://github.com/luna-assistant-ai/luna-assistant-ai-docs) (coming soon)  
+
+---
+
+## 📁 Repository Structure
+
+- **[luna-assistant-ai-core](./)** ← you are here (Rust engine, FFI bindings, basic clients)  
+- **[luna-assistant-ai-docs](https://github.com/luna-assistant-ai/luna-assistant-ai-docs)** (guides, accessibility standards, prompt library)  
+- **[luna-assistant-ai-pro](https://github.com/luna-assistant-ai/luna-assistant-ai-pro)** — private (AI copilots, premium integrations, caregiver dashboard)  
+- **[@luna-assistant-ai](https://github.com/luna-assistant-ai)** (organization-level roadmap & discussions)  
 
 ---
 
@@ -61,47 +105,62 @@ Its mission is to bring **autonomy, safety, and simplicity** to daily life throu
 ### Architecture Diagram
 
 ```mermaid
-flowchart LR
-    subgraph Clients
-        iOS["iOS (SwiftUI)"]
-        Android["Android (Jetpack Compose)"]
-        Pi["Raspberry Pi Hub"]
+flowchart TD
+    User["👤 User (Voice)"]
+
+    subgraph Device["📱 Device"]
+        App["Luna App"]
+        Core["🦀 Rust Core"]
+        Skills["🔧 Skills\nSOS · OCR · Reminders"]
     end
 
-    subgraph Core
-        EventBus["Event Bus"]
-        Intents["Intent Detection"]
-        Skills["Skills · SOS/OCR/Reminders/Gmail/Spotify/Search"]
+    subgraph Cloud["☁️ Services"]
+        GPT["🎤 GPT-4o Realtime"]
+        Gmail["📧 Gmail API"]
+        Emergency["🚨 Emergency Services"]
+        Storage["🗂️ Secure Storage"]
     end
 
-    subgraph Cloud
-        Realtime["GPT-4o Realtime"]
-        Backend["Lightweight Backend"]
-        Copilots["AI Copilots · CrewAI/AutoGen"]
-    end
+    User <--> App
+    App <--> Core
+    Core <--> Skills
+    Skills --> GPT
+    Skills --> Gmail
+    Skills --> Emergency
+    Core --> Storage
 
-    Clients -->|"FFI / Local Service"| Core
-    Core -->|"Ephemeral Keys / APIs"| Cloud
-    Copilots -->|"PRDs / ADRs / Issues"| Zenhub((Zenhub))
-    Copilots -->|Guidance| Maintainers((Core Team))
-    Maintainers -->|Deploy / Release| Clients
+    style User fill:#e1f5fe,stroke:#90caf9
+    style Skills fill:#f3e5f5,stroke:#ce93d8
+    style Emergency fill:#ffebee,stroke:#ef9a9a
+    style Storage fill:#f1f8e9,stroke:#aed581
 ```
+
+*Luna's governance and development process (including AI-assisted analysis) is detailed in the [AI-Assisted Governance](#-ai-assisted-governance-human-in-the-loop) section below.*
 
 ---
 
-## 🤖 AI-first Governance
+## 🏗️ Architecture Decisions
 
-Luna is guided by an **AI board of copilots**, orchestrated with **CrewAI** (execution pipelines) and **AutoGen** (exploratory debates).
+- **Why Rust core?** Deterministic performance and memory safety for accessibility-critical flows.  
+- **Why AI copilots?** Scale expert analysis (compliance, forecasting, benchmarking) in a niche domain with limited human bandwidth.  
+- **Why hybrid licensing?** Keep the foundation open-source while funding long-term accessibility R&D through premium integrations.
 
-### AI Copilots
+---
+
+## 🤖 AI-Assisted Governance (Human-in-the-Loop)
+
+Luna uses AI copilots to accelerate analysis while humans retain decision ownership.
+
+- **AI role**: Draft reports, benchmarks, compliance reviews, financial forecasting.  
+- **Human role**: Approve strategic choices, user-facing changes, and safety-critical flows.  
+- **Process**: AI output → Maintainer review → Validation with stakeholders → Action in product or roadmap.  
+
+CrewAI orchestrates structured pipelines and AutoGen supports exploratory debates when evaluating trade-offs.
+
 - **Marketing AI** → competitive benchmarking, user studies (visually impaired in NZ), market sizing  
 - **Finance AI** → cost analysis, financial forecasting, ROI scenarios  
 - **Tech AI** → architecture choices, infra costs, security validation  
 - **Legal AI** → GDPR/NZ compliance, open-source licenses, funding opportunities  
-
-### Orchestration
-- **CrewAI** → structured pipelines, outputs PRDs/ADRs/issues for Zenhub  
-- **AutoGen** → exploratory debates, multi-criteria arbitration with human-in-the-loop  
 
 ---
 
@@ -121,12 +180,6 @@ Luna is guided by an **AI board of copilots**, orchestrated with **CrewAI** (exe
 ### License Choice
 - **Core & clients**: MIT → maximize adoption and contributions  
 - **Premium modules**: proprietary license (e.g., SSPL or BUSL to restrict commercial reuse)  
-
-### GitHub Structure
-- Public repo: `luna-assistant-ai-core` (Rust + clients + docs)  
-- Public repo: `luna-assistant-ai-docs` (guides, accessibility docs, prompts)  
-- Private repo: `luna-assistant-ai-pro` (AI copilots, premium integrations)  
-- GitHub organization: `luna-assistant-ai/`  
 
 ### Community Governance
 - **Maintainers**: core team (Rust/iOS/Android devs)  
@@ -149,53 +202,60 @@ Luna is guided by an **AI board of copilots**, orchestrated with **CrewAI** (exe
 ### Build the Core
 ```bash
 cd core
-cargo test
 cargo build --release
+cargo test
+```
 
-Generate XCFramework (iOS)
-bash core/build-ios.sh
+- Generate iOS XCFramework: `bash core/build-ios.sh`
+- Run the iOS client: `open clients/ios/App.xcodeproj` then press `Cmd + R`
 
-Run the iOS App
-open clients/ios/App.xcodeproj
-# Cmd + R in Xcode
+### CI/CD Workflow
+- Drone CI → build, test, iOS artifacts, Raspberry Pi Docker image  
+- Mergify → auto-merge if CI passes and a review approves  
+- Zenhub → backlog & roadmap fed by CrewAI pipelines  
 
-CI/CD Workflow
-Drone CI → build, test, iOS artifacts, Raspberry Pi Docker image
-Mergify → auto-merge if CI passes + review approved
-Zenhub → backlog & roadmap fed by CrewAI pipelines
+### Security & Privacy
+- 🔑 Ephemeral keys for Realtime (never stored client-side)  
+- 🔒 Local data encrypted (SQLite + Keychain/Keystore)  
+- 🚫 No voice recordings stored by default (opt-in only)  
+- ✅ Critical actions (e.g., 112 calls) require vocal confirmation  
 
-🛡️ Security & Privacy
-🔑 Ephemeral keys for Realtime (never stored client-side)
-🔒 Local data encrypted (SQLite + Keychain/Keystore)
-🚫 No voice recordings stored by default (opt-in only)
-✅ Critical actions (e.g., 112 calls) require vocal confirmation
+---
 
-🧩 Roadmap
-MVP (3–4 months)
-Rust Core + iOS app (Realtime audio)
-SOS, reminders, basic OCR skills
-CrewAI orchestrating Marketing→Finance→Tech→Legal
-First user tests (NZ, 5–10 people)
-Phase 2 (6–8 months)
-Gmail, Spotify, smart search
-AutoGen for exploratory debates
-Raspberry Pi hub (offline fallback)
-Phase 3 (12 months)
-Android client
-Accessibility extensions (Braille, eye-tracking)
-Partnerships with associations & public funding
+## 🛣️ Roadmap & Status *(last updated: December 2024)*
 
-👩‍💻 Contribution
-Fork + branch (feat/...)
-Run tests (cargo test, xcodebuild test)
-Open PR with template (objective, tests, accessibility, rollback)
-Human review required → CI green → Mergify auto-merge
-Conventions
-Commits → Conventional Commits
-Branches → feat/..., fix/...
-PRs → small, tested, documented
+- **Weeks 1–4**: Core engine scaffold + iOS skeleton → first public commit  
+- **Months 1–2**: SOS + Reminders skills → closed alpha with testers in NZ  
+- **Months 3–4**: OCR pipeline + end-to-end voice loop → MVP release and feedback cycle  
+- **Post-MVP**: Gmail/Spotify integrations, Raspberry Pi hub, AI governance pilots shared via Docs repo  
 
-📜 License
-Core: MIT (open source)
-Basic clients: MIT
-Premium modules (AI copilots, advanced integrations): proprietary license
+Progress snapshots and issues live in Zenhub boards and GitHub Discussions.
+
+---
+
+## 👩‍💻 Contributing
+
+Luna thrives on community input—especially from people with lived accessibility experience. Whether you are new to open source or a seasoned maintainer, we can pair you with a starter issue or mentoring buddy.
+
+- Fork then branch (`feat/...`, `fix/...`)  
+- Run tests (`cargo test`, `xcodebuild test`) before opening a PR  
+- Fill the PR template (objective, tests, accessibility, rollback)  
+- Human review required → CI green → Mergify auto-merge  
+- Follow Conventional Commits and keep PRs small, tested, documented  
+
+---
+
+## 🤝 Get Involved
+
+- **Users with visual impairments**: Join early testing via [GitHub Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions)  
+- **Developers**: Pick up tasks in [Issues](https://github.com/luna-assistant-ai/luna-assistant-ai-core/issues) and review [CONTRIBUTING.md](./CONTRIBUTING.md)  
+- **Organizations & partners**: Start a thread in [GitHub Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions)  
+- **Community**: Watch [@luna-assistant-ai](https://github.com/luna-assistant-ai) for release updates  
+
+---
+
+## 📜 License
+
+- Core: MIT (open source)  
+- Basic clients: MIT  
+- Premium modules (AI copilots, advanced integrations): proprietary license  
