@@ -195,7 +195,6 @@ Legal Agent ↔ Marketing Agent ↔ Technical Agent ↔ Finance Agent
 #### **Daily Development (Human + AI Collaboration)**
 - **Continue (VS Code)**: Rust core development, SwiftUI implementation, debugging  
 - **Claude**: Tactical decisions, code review, accessibility validation  
-- **GitHub Copilot**: Additional code assistance and completion  
 
 ### Real Governance Examples
 
