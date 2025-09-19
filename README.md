@@ -109,16 +109,15 @@ flowchart TD
     User["👤 User (Voice)"]
 
     subgraph Device["📱 Device"]
-        App["Luna App"]
+        App["iOS/Android App"]
         Core["🦀 Rust Core"]
-        Skills["🔧 Skills\nSOS · OCR · Reminders"]
+        Skills["🔧 Skills\nSOS • OCR • Reminders"]
     end
 
-    subgraph Cloud["☁️ Services"]
+    subgraph Services["☁️ External Services"]
         GPT["🎤 GPT-4o Realtime"]
         Gmail["📧 Gmail API"]
         Emergency["🚨 Emergency Services"]
-        Storage["🗂️ Secure Storage"]
     end
 
     User <--> App
@@ -127,12 +126,10 @@ flowchart TD
     Skills --> GPT
     Skills --> Gmail
     Skills --> Emergency
-    Core --> Storage
 
-    style User fill:#e1f5fe,stroke:#90caf9
-    style Skills fill:#f3e5f5,stroke:#ce93d8
-    style Emergency fill:#ffebee,stroke:#ef9a9a
-    style Storage fill:#f1f8e9,stroke:#aed581
+    style User fill:#e1f5fe
+    style Skills fill:#f3e5f5
+    style Emergency fill:#ffebee
 ```
 
 *Luna's governance and development process (including AI-assisted analysis) is detailed in the [AI-Assisted Governance](#-ai-assisted-governance-human-in-the-loop) section below.*
@@ -225,39 +222,22 @@ AI Strategic Analysis → Human Review → Community Input → Final Decision
 - **External contributors**: PR → human review required → CI/CD green → auto-merge via Mergify  
 - **CONTRIBUTING.md**: clear rules (tests, accessibility, Conventional Commits)  
 - **CODE_OF_CONDUCT.md**: inclusivity & respect  
-- **Public roadmap** (Zenhub boards in read-only)  
+- **GitHub Projects**: public roadmap & prioritization  
 - **GitHub Discussions**: open channel for visually impaired users & caregivers  
 
 ---
 
-## 🚀 Development & CI/CD
+## 🛠 Development Workflow
 
-### Requirements
-- [Rust](https://www.rust-lang.org/tools/install) ≥ 1.81  
-- [Xcode](https://developer.apple.com/xcode/) (iOS)  
-- [Node.js](https://nodejs.org/) (OAuth backend)  
-- [Drone CI](https://www.drone.io/) (CI/CD)  
+**Project Management:**
+- **GitHub Projects** → Public roadmap & feature tracking  
+- **GitHub Issues** → Bug reports, accessibility requirements  
+- **GitHub Discussions** → Community feedback & early testing signup  
 
-### Build the Core
-```bash
-cd core
-cargo build --release
-cargo test
-```
-
-- Generate iOS XCFramework: `bash core/build-ios.sh`
-- Run the iOS client: `open clients/ios/App.xcodeproj` then press `Cmd + R`
-
-### CI/CD Workflow
-- Drone CI → build, test, iOS artifacts, Raspberry Pi Docker image  
-- Mergify → auto-merge if CI passes and a review approves  
-- Zenhub → backlog & roadmap fed by CrewAI pipelines  
-
-### Security & Privacy
-- 🔑 Ephemeral keys for Realtime (never stored client-side)  
-- 🔒 Local data encrypted (SQLite + Keychain/Keystore)  
-- 🚫 No voice recordings stored by default (opt-in only)  
-- ✅ Critical actions (e.g., 112 calls) require vocal confirmation  
+**CI/CD Pipeline:**
+- **Drone CI** → Multi-platform builds (iOS, Android, Raspberry Pi Docker images)  
+- **Mergify** → Auto-merge when Drone CI passes + review approved  
+- **AI Copilots** → Generate PRDs/ADRs/issues directly to GitHub Projects  
 
 ---
 
@@ -268,7 +248,7 @@ cargo test
 - **Months 3–4**: OCR pipeline + end-to-end voice loop → MVP release and feedback cycle  
 - **Post-MVP**: Gmail/Spotify integrations, Raspberry Pi hub, AI governance pilots shared via Docs repo  
 
-Progress snapshots and issues live in Zenhub boards and GitHub Discussions.
+Progress snapshots and issues live in GitHub Projects boards and GitHub Discussions.
 
 ---
 
