@@ -149,18 +149,57 @@ flowchart TD
 
 ## 🤖 AI-Assisted Governance (Human-in-the-Loop)
 
-Luna uses AI copilots to accelerate analysis while humans retain decision ownership.
+Luna leverages AI copilots to scale strategic analysis in accessibility—a domain where specialized expertise is scarce—while maintaining strict human oversight on all decisions.
 
-- **AI role**: Draft reports, benchmarks, compliance reviews, financial forecasting.  
-- **Human role**: Approve strategic choices, user-facing changes, and safety-critical flows.  
-- **Process**: AI output → Maintainer review → Validation with stakeholders → Action in product or roadmap.  
+### Decision Flow
 
-CrewAI orchestrates structured pipelines and AutoGen supports exploratory debates when evaluating trade-offs.
+```
+AI Strategic Analysis → Human Review → Community Input → Final Decision
+```
 
-- **Marketing AI** → competitive benchmarking, user studies (visually impaired in NZ), market sizing  
-- **Finance AI** → cost analysis, financial forecasting, ROI scenarios  
-- **Tech AI** → architecture choices, infra costs, security validation  
-- **Legal AI** → GDPR/NZ compliance, open-source licenses, funding opportunities  
+**What AI handles:**
+- Market intelligence & competitive positioning analysis  
+- Product strategy recommendations & feature prioritization  
+- Operational modeling & unit economics forecasting  
+- Risk assessment & regulatory compliance mapping  
+
+**What humans control:**
+- All strategic decisions affecting users and roadmap  
+- Safety-critical features (emergency calls, data privacy)  
+- Community governance and contributor policies  
+- Final product releases and partnership agreements  
+
+### AI Copilot Teams
+
+| Copilot | Strategic Focus | Business-Critical Questions |
+|---------|-----------------|-----------------------------|
+| **Market Intelligence** | Competitive positioning & user acquisition | "Which accessibility gaps can we own vs. competitors?" "What drives switching from existing solutions?" |
+| **Product Strategy** | Feature prioritization & roadmap | "Which skills unlock highest user retention?" "When do we expand beyond visual impairments?" |
+| **Operations** | Scalability & unit economics | "At what user volume do we need dedicated infrastructure?" "Which premium features justify subscription pricing?" |
+| **Risk Management** | Regulatory compliance & reputation | "What liability exposure from emergency call failures?" "How do privacy regulations limit personalization?" |
+
+### Strategic Output Examples
+
+**Market Intelligence:**  
+> "Voiceitt and Be My Eyes dominate communication, not autonomy. Emergency calling gap = 47% of target users underserved. Entry strategy: own the safety vertical first."
+
+**Product Strategy:**  
+> "User retention analysis: Emergency features drive 89% retention vs 34% for entertainment features. Prioritize SOS + medication reminders over Spotify integration."
+
+**Operations:**  
+> "GPT-4o cost trajectory: $0.08/user at 1K users → $0.03/user at 10K users. Break-even with freemium: 2,500 active users minimum or $15/month premium tier."
+
+**Risk Management:**  
+> "Emergency call liability: NZ accident compensation covers technology failures. Key risk = false positives. Mitigation: 3-second confirmation + voice pattern recognition."
+
+### Safeguards in Place
+
+- 🔒 **No autonomous decisions**: All AI outputs require maintainer approval  
+- 👥 **Community visibility**: Major decisions discussed in public GitHub discussions  
+- 🛡️ **Safety override**: Human veto on any AI recommendation, no questions asked  
+- 📊 **Transparency**: AI-generated reports tagged and publicly available  
+
+*Think of it as having a strategic consulting team that never sleeps, but your human judgment always has the final say.*
 
 ---
 
