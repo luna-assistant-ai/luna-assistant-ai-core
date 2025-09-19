@@ -336,7 +336,7 @@ Progress snapshots and issues live in GitHub Projects boards and GitHub Discussi
 ## 🤝 Get Involved
 
 - **Users with visual impairments**: Join early testing via [GitHub Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions)  
-- **Developers**: Pick up tasks in [Issues](https://github.com/luna-assistant-ai/luna-assistant-ai-core/issues) and review [CONTRIBUTING.md](./CONTRIBUTING.md)  
+- **Developers**: Share feedback or research findings via [GitHub Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions)  
 - **Organizations & partners**: Start a thread in [GitHub Discussions](https://github.com/luna-assistant-ai/luna-assistant-ai-core/discussions)  
 - **Community**: Watch [@luna-assistant-ai](https://github.com/luna-assistant-ai) for release updates  
 
