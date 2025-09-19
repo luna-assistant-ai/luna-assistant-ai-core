@@ -63,27 +63,27 @@ Its mission is to bring **autonomy, safety, and simplicity** to daily life throu
 ```mermaid
 flowchart LR
     subgraph Clients
-        iOS[iOS (SwiftUI)]
-        Android[Android (Jetpack Compose)]
-        Pi[Raspberry Pi Hub]
+        iOS["iOS (SwiftUI)"]
+        Android["Android (Jetpack Compose)"]
+        Pi["Raspberry Pi Hub"]
     end
 
     subgraph Core
-        EventBus[Event Bus]
-        Intents[Intent Detection]
-        Skills[Skills - SOS/OCR/Reminders/Gmail/Spotify/Search]
+        EventBus["Event Bus"]
+        Intents["Intent Detection"]
+        Skills["Skills · SOS/OCR/Reminders/Gmail/Spotify/Search"]
     end
 
     subgraph Cloud
-        Realtime[GPT-4o Realtime]
-        Backend[Lightweight Backend]
-        Copilots[AI Copilots - CrewAI/AutoGen]
+        Realtime["GPT-4o Realtime"]
+        Backend["Lightweight Backend"]
+        Copilots["AI Copilots · CrewAI/AutoGen"]
     end
 
-    Clients -->|FFI / Local Service| Core
-    Core -->|Ephemeral Keys / APIs| Cloud
-    Copilots -->|PRDs / ADRs / Issues| Zenhub[(Zenhub)]
-    Copilots -->|Guidance| Maintainers[(Core Team)]
+    Clients -->|"FFI / Local Service"| Core
+    Core -->|"Ephemeral Keys / APIs"| Cloud
+    Copilots -->|"PRDs / ADRs / Issues"| Zenhub((Zenhub))
+    Copilots -->|Guidance| Maintainers((Core Team))
     Maintainers -->|Deploy / Release| Clients
 ```
 
