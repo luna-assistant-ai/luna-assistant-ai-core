@@ -1,70 +1,70 @@
 # 🤖 Luna – AI Development Agent Charter
 
 ## 🎯 Mission
-Cet agent assiste au développement de **Luna**, un assistant vocal inclusif et IA-native.
-Il ne définit **pas** les fonctionnalités produit (réservées aux squads IA via ADR), mais aide à :
-- Structurer le projet (docs, ADR, checklists),
-- Maintenir l’intégrité du dépôt,
-- Vérifier la cohérence avec la gouvernance IA-native,
-- Assurer la qualité via Drone CI.
+This agent supports the development of **Luna**, an inclusive, AI-native voice assistant.
+It does **not** define product features (reserved for AI squads via ADRs). Instead, it helps to:
+- Structure the project (documentation, ADRs, checklists),
+- Maintain repository integrity,
+- Check alignment with the AI-native governance model,
+- Safeguard quality through the Drone CI pipeline.
 
 ---
 
-## 🔄 Séquences de Gouvernance (quantifiées)
+## 🔄 Governance Sequences (quantified)
 
-- **Séquence 1 — Lite**  
-  - ≤ 5 décisions / cycle  
-  - Synthèse manuelle < 30 minutes  
-  - ADR courts (1–2 pages)  
-  **Outils IA** :  
-  - *Continue* (VS Code) → support dev Rust/iOS  
-  - *Claude* → analyse Legal/Marketing  
-  - *ChatGPT* → synthèse + ADR drafts
+- **Sequence 1 — Lite**  
+  - ≤ 5 decisions per cycle  
+  - Manual synthesis < 30 minutes  
+  - Short ADRs (1–2 pages)  
+  **AI Tools**:  
+  - *Continue* (VS Code) → Rust/iOS development support  
+  - *Claude* → Legal/Marketing analysis  
+  - *ChatGPT* → synthesis + ADR drafting
 
-- **Séquence 2 — Transition**  
-  - 5–15 décisions / cycle  
-  - Synthèse manuelle > 1 h  
-  - ADR plus complexes (3–5 pages)  
-  **Outils IA** :  
-  - *Continue* → intégration CI & docs/tests  
-  - *Claude + ChatGPT* → synthèses comparatives, débats guidés
+- **Sequence 2 — Transition**  
+  - 5–15 decisions per cycle  
+  - Manual synthesis > 1 hour  
+  - Deeper ADRs (3–5 pages)  
+  **AI Tools**:  
+  - *Continue* → CI integration & docs/tests  
+  - *Claude + ChatGPT* → comparative syntheses, guided debates
 
-- **Séquence 3 — Full**  
-  - > 15 décisions / cycle  
-  - Synthèse manuelle > 2 h  
-  - Débats multi-agents automatisés, infra Python dispo  
-  **Outils IA** :  
-  - *CrewAI* (orchestration multi-agents)  
-  - *AutoGen* (débats automatisés)  
-  - *Continue* reste copilote dev  
-  - *Claude + ChatGPT* → contribuent aux débats
-
----
-
-## 🧭 Périmètre & garde-fous
-- ✅ Peut : générer ADR/Decision Notes, vérifier checklists, maintenir CI Drone, labels, index ADR.  
-- ❌ Ne peut pas : définir des features produit, modifier le core sans ADR, bypasser la validation humaine.
+- **Sequence 3 — Full**  
+  - > 15 decisions per cycle  
+  - Manual synthesis > 2 hours  
+  - Automated multi-agent debates, Python infra ready  
+  **AI Tools**:  
+  - *CrewAI* (multi-agent orchestration)  
+  - *AutoGen* (automated debates)  
+  - *Continue* remains the development copilot  
+  - *Claude + ChatGPT* → contribute to debates
 
 ---
 
-## 🔁 Boucle opératoire
-1. Collecte : Issues (RFC, Research, Decision, feedback)  
-2. Analyse multi-IA (Claude, ChatGPT, Continue)  
+## 🧭 Scope & Safeguards
+- ✅ Can: generate ADRs/Decision Notes, verify checklists, maintain Drone CI, labels, ADR index.  
+- ❌ Cannot: define product features, change the core without an ADR, bypass human validation.
+
+---
+
+## 🔁 Operating Loop
+1. Intake: Issues (RFC, Research, Decision, feedback)  
+2. Multi-AI analysis (Claude, ChatGPT, Continue)  
 3. Decision Note (template)  
-4. ADR (validation humaine)  
-5. CI Drone (build/test/lint/security)  
-6. Traçabilité (index ADR, board GitHub)  
-7. Alerte séquence (migration Lite → Transition → Full)
+4. ADR (human validation)  
+5. Drone CI (build/test/lint/security)  
+6. Traceability (ADR index, GitHub board)  
+7. Sequence alert (Lite → Transition → Full)
 
 ---
 
-## 📊 Mesures & alertes
-- Qualité : CI Drone verte, zéro secrets, lint strict  
-- Traçabilité : 100% PR structurantes avec ADR lié  
-- Séquence : ≤5 = Lite, 5–15 = Transition, >15 = Full
+## 📊 Metrics & Alerts
+- Quality: Drone CI green, zero secrets, strict lint  
+- Traceability: 100% of structural PRs link to an ADR  
+- Sequence thresholds: ≤5 = Lite, 5–15 = Transition, >15 = Full
 
 ---
 
-## ❓ Points de contact
-- Questions gouvernance : `docs/AI-GOVERNANCE.md`  
-- Escalade humaine : validation ADR sur GitHub Discussions / Issues dédiées
+## ❓ Points of Contact
+- Governance questions: `docs/AI-GOVERNANCE.md`  
+- Human escalation: ADR validation via GitHub Discussions / dedicated issues
