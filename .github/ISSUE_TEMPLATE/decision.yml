@@ -1,0 +1,20 @@
+name: Decision
+description: Track a decision to be captured as an ADR
+title: "Decision: [short description]"
+labels: ["adr:required"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Background and drivers for this decision
+  - type: textarea
+    id: resolution
+    attributes:
+      label: Resolution
+      description: What was decided, and why
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences
+      description: Impacts, risks, and follow-up actions
