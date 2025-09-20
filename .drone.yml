@@ -26,3 +26,23 @@ trigger:
   event:
     - push
     - pull_request
+
+---
+kind: pipeline
+type: docker
+name: labels-sync
+
+steps:
+  - name: sync-labels
+    image: python:3.11-slim
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
+      GITHUB_REPO: luna-assistant-ai/luna-assistant-ai-core
+    commands:
+      - pip install requests --quiet
+      - python scripts/sync-labels.py --repo "$GITHUB_REPO" --labels labels.json --dry-run=0 --delete-missing=0
+
+trigger:
+  event:
+    - promote
