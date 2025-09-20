@@ -1,10 +1,21 @@
 # 🌙 Luna – AI-First & Inclusive Voice Assistant
 
-[![Drone CI](https://drone.luna-assistant.ai/api/badges/luna-assistant-ai/luna-assistant-ai-core/status.svg)](https://drone.luna-assistant-ai/luna-assistant-ai-core)
+[![Drone CI](https://drone.luna-assistant.ai/api/badges/luna-assistant-ai/luna-assistant-ai-core/status.svg)](https://drone.luna-assistant.ai/luna-assistant-ai-core)
 
 **Mission**  
 Deliver autonomy and simplicity for people with low vision (and broader accessibility needs) with an **AI-native** approach:  
 → Strategic decisions are produced by AI squads (Legal, Marketing, Tech, Finance) and ratified through Architecture Decision Records (ADRs). The implementation is handled solo to preserve coherence, with human oversight applied at every step through ADR validation.
+
+---
+
+## 🧭 Start Here
+
+- [Contributing guide](docs/CONTRIBUTING.md)
+- [PR template](.github/PULL_REQUEST_TEMPLATE.md)
+- [AI governance framework](docs/AI-GOVERNANCE.md)
+- [ADR index](docs/DECISIONS/index.md)
+- [Security policy](docs/SECURITY.md)
+- [Privacy policy](docs/PRIVACY.md)
 
 ---
 
@@ -58,13 +69,17 @@ luna-assistant-ai-core/
 │  ├─ DEVELOPER.md
 │  ├─ CONTRIBUTING.md
 │  ├─ WORKFLOW.md
-│  ├─ CONTEXT.md
 │  ├─ DECISIONS/
 │  └─ PROCESS/
-├─ .drone.yml       # Drone pipeline definition (build/test/lint/security)
-└─ .github/
-   ├─ PULL_REQUEST_TEMPLATE.md
-   └─ ISSUE_TEMPLATE/
+├─ .github/
+│  ├─ ISSUE_TEMPLATE/
+│  └─ PULL_REQUEST_TEMPLATE.md
+├─ scripts/
+│  └─ sync-labels.py
+├─ labels.json
+├─ .drone.yml
+├─ .gitignore
+└─ LICENSE
 ```
 
 ---
@@ -111,7 +126,7 @@ luna-assistant-ai-core/
 - 🔑 Ephemeral keys only (PKCE, short TTL)  
 - 🔒 Local data encrypted (SQLCipher + system keychain/keystore)  
 - 🚫 No voice recordings by default (explicit opt-in)  
-- 📖 Transparent policy documented in `docs/PRIVACY.md`
+- 📖 See [docs/PRIVACY.md](docs/PRIVACY.md) and [docs/SECURITY.md](docs/SECURITY.md)
 
 ---
 
@@ -119,7 +134,7 @@ luna-assistant-ai-core/
 
 - ✅ Welcome: RFCs, documentation, tests, accessibility feedback  
 - 🚫 Not accepted: core engine code without a validated ADR  
-- 📬 GitHub tooling: issue templates for [RFCs](./.github/ISSUE_TEMPLATE/rfc.md), [decisions](./.github/ISSUE_TEMPLATE/decision.md), research, and feedback  
+- 📬 GitHub tooling: issue templates for [RFCs](.github/ISSUE_TEMPLATE/rfc.yml), [decisions](.github/ISSUE_TEMPLATE/decision.yml), research, and feedback  
 - 👩‍⚖️ Decisions are public via ADRs (`docs/DECISIONS/`)
 
 ---
