@@ -2,21 +2,57 @@ kind: pipeline
 type: docker
 name: default
 
+volumes:
+  - name: cargo-home
+    temp: {}
+  - name: cargo-target
+    temp: {}
+
 steps:
+  - name: fmt
+    image: rust:1.81.0
+    environment:
+      CARGO_HOME: /cargo-home
+      CARGO_TARGET_DIR: /cargo-target
+    volumes:
+      - name: cargo-home
+        path: /cargo-home
+      - name: cargo-target
+        path: /cargo-target
+    commands:
+      - rustup component add rustfmt || true
+      - cargo fmt --check
+
   - name: build-test
-    image: rust:1.81
+    image: rust:1.81.0
+    environment:
+      CARGO_HOME: /cargo-home
+      CARGO_TARGET_DIR: /cargo-target
+    volumes:
+      - name: cargo-home
+        path: /cargo-home
+      - name: cargo-target
+        path: /cargo-target
     commands:
       - cargo build --verbose
       - cargo test --verbose
 
   - name: lint
-    image: rust:1.81
+    image: rust:1.81.0
+    environment:
+      CARGO_HOME: /cargo-home
+      CARGO_TARGET_DIR: /cargo-target
+    volumes:
+      - name: cargo-home
+        path: /cargo-home
+      - name: cargo-target
+        path: /cargo-target
     commands:
       - rustup component add clippy || true
       - cargo clippy -- -D warnings
 
   - name: security
-    image: aquasec/trivy:latest
+    image: aquasec/trivy:0.51.4
     commands:
       - trivy fs --exit-code 1 --severity HIGH,CRITICAL .
 
