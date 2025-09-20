@@ -1,0 +1,20 @@
+name: Accessibility Feedback
+description: Capture feedback from users/testers on accessibility
+title: "Feedback: [short summary]"
+labels: ["accessibility", "feedback"]
+body:
+  - type: textarea
+    id: user_context
+    attributes:
+      label: User Context
+      description: Who gave the feedback (tester, visually impaired user, caregiver, etc.)?
+  - type: textarea
+    id: experience
+    attributes:
+      label: Experience
+      description: What worked well, what was difficult?
+  - type: textarea
+    id: suggestions
+    attributes:
+      label: Suggestions
+      description: What changes would improve accessibility?
