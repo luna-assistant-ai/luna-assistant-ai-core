@@ -1,0 +1,28 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build-test
+    image: rust:1.81
+    commands:
+      - cargo build --verbose
+      - cargo test --verbose
+
+  - name: lint
+    image: rust:1.81
+    commands:
+      - rustup component add clippy || true
+      - cargo clippy -- -D warnings
+
+  - name: security
+    image: aquasec/trivy:latest
+    commands:
+      - trivy fs --exit-code 1 --severity HIGH,CRITICAL .
+
+trigger:
+  branch:
+    - main
+  event:
+    - push
+    - pull_request

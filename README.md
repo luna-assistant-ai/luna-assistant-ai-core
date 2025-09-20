@@ -1,5 +1,7 @@
 # 🌙 Luna – AI-First & Inclusive Voice Assistant
 
+[![Drone CI](https://drone.luna-assistant.ai/api/badges/luna-assistant-ai/luna-assistant-ai-core/status.svg)](https://drone.luna-assistant-ai/luna-assistant-ai-core)
+
 **Mission**  
 Deliver autonomy and simplicity for people with low vision (and broader accessibility needs) with an **AI-native** approach:  
 → Strategic decisions are produced by AI squads (Legal, Marketing, Tech, Finance) and ratified through Architecture Decision Records (ADRs). The implementation is handled solo to preserve coherence, with human oversight applied at every step through ADR validation.
