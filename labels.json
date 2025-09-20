@@ -1,0 +1,18 @@
+[
+  { "name": "sequence:1-lite", "color": "4c78a8", "description": "Governance Sequence 1 (Lite)" },
+  { "name": "sequence:2-transition", "color": "f58518", "description": "Governance Sequence 2 (Transition)" },
+  { "name": "sequence:3-full", "color": "e45756", "description": "Governance Sequence 3 (Full)" },
+
+  { "name": "domain:legal", "color": "72b7b2", "description": "Legal domain input required" },
+  { "name": "domain:marketing", "color": "54a24b", "description": "Marketing domain input required" },
+  { "name": "domain:tech", "color": "eeca3b", "description": "Tech domain input required" },
+  { "name": "domain:finance", "color": "b279a2", "description": "Finance domain input required" },
+
+  { "name": "adr:required", "color": "ff9da6", "description": "ADR required for this issue/PR" },
+  { "name": "adr:linked", "color": "9c755f", "description": "ADR linked" },
+  { "name": "adr:done", "color": "bab0ac", "description": "ADR completed/validated" },
+
+  { "name": "research", "color": "8c564b", "description": "Research brief or findings" },
+  { "name": "accessibility", "color": "17becf", "description": "Accessibility-related feedback or issue" },
+  { "name": "feedback", "color": "9edae5", "description": "General feedback from users or testers" }
+]
