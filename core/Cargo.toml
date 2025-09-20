@@ -1,0 +1,10 @@
+[package]
+name = "luna-core"
+version = "0.1.0"
+edition = "2021"
+description = "Minimal core skeleton for Luna Assistant"
+license = "MIT"
+
+[lib]
+name = "luna_core"
+path = "src/lib.rs"

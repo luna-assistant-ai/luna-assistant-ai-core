@@ -8,7 +8,7 @@ Each ADR captures a significant architectural or governance decision, its contex
 ## ADR List
 
 - **ADR-0000** — Template (do not modify)  
-- **ADR-0001** — [Reserved for the first real decision]
+- **ADR-0001** — Establish Minimal Rust Core Skeleton (Draft)
 
 ---
 
