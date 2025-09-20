@@ -1,0 +1,24 @@
+name: RFC
+description: Propose a Request for Comments (decision proposal)
+title: "RFC: [short description]"
+labels: ["adr:required"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this decision needed? What problem does it solve?
+  - type: textarea
+    id: options
+    attributes:
+      label: Options
+      description: List potential options (A, B, C…)
+  - type: checkboxes
+    id: domains
+    attributes:
+      label: Domains involved
+      options:
+        - label: domain:legal
+        - label: domain:marketing
+        - label: domain:tech
+        - label: domain:finance
